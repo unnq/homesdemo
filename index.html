@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Arc Build — Custom Homes</title>
+
+  <!-- Fonts: Montserrat (title) + Source Sans Pro (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Source+Sans+Pro:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a href="#" class="logo">Arc&nbsp;Build</a>
+      <ul class="nav-links">
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="hero">
+    <div class="hero-grid">
+      <!-- Left: 2/3 -->
+      <section class="hero-copy">
+        <h1 class="hero-title">Design your dream home right now.</h1>
+        <p class="hero-sub">
+          From ground-up construction to thoughtful remodels, we handle permits, schedules, and trades—delivering a
+          durable, beautiful home without the headache.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#">Get a quote</a>
+          <a class="btn btn-secondary" href="#">See projects</a>
+        </div>
+      </section>
+
+      <!-- Right: 1/3 — Build pad -->
+      <aside class="build-pad" id="buildPad" aria-label="Drag the pieces to assemble a house">
+        <svg id="houseSvg" class="build-svg" viewBox="0 0 360 360" role="img"
+             aria-label="Draggable house pieces (roof, body, windows, door)"></svg>
+
+        <div class="pad-controls">
+          <label class="snap-toggle">
+            <input type="checkbox" id="snapToggle" checked />
+            <span>Snap assist</span>
+          </label>
+          <button id="resetPieces" class="btn btn-mini">Reset pieces</button>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
