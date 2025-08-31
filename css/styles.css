@@ -1,0 +1,159 @@
+:root{
+  --page-bg: #fcfcfd;
+  --ink: #141414;
+  --muted: #5b5b5b;
+
+  /* Button pastels */
+  --pastel-blue:  #d8ecff;
+  --pastel-peach: #ffe6cc;
+  --btn-ink: #0e0e0e;
+
+  /* Piece strokes */
+  --stroke: rgba(0,0,0,0.65);
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body{
+  margin: 0;
+  background: var(--page-bg);
+  color: var(--ink);
+  font-family: "Source Sans Pro", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ===== NAVBAR (transparent) ===== */
+.site-header { position: relative; z-index: 10; }
+.nav{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 22px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav a { color: var(--ink); text-decoration: none; }
+.logo{
+  font-family: "Montserrat", "Source Sans Pro", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-weight: 900;
+  letter-spacing: .2px;
+  font-size: 1.25rem;
+}
+.nav-links{
+  list-style: none; display:flex; gap: 22px; margin: 0; padding: 0;
+}
+.nav-links a{ opacity: .85; }
+.nav-links a:hover{ opacity: 1; }
+
+/* ===== HERO LAYOUT ===== */
+.hero{
+  min-height: calc(100vh - 72px);
+  display: grid;
+  align-items: center;
+  position: relative;
+  padding: 40px 16px 80px;
+}
+.hero-grid{
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: 36px;
+  grid-template-columns: 2fr 1fr; /* 2/3 + 1/3 */
+  align-items: center;
+}
+@media (max-width: 960px){
+  .hero-grid{ grid-template-columns: 1fr; }
+}
+
+/* Left side */
+.hero-title{
+  font-family: "Montserrat", "Source Sans Pro", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -0.5px;
+  margin: 0 0 12px;
+  font-size: clamp(2.2rem, 6vw, 4rem);
+}
+.hero-sub{
+  margin: 0 0 26px;
+  max-width: 720px;
+  color: var(--muted);
+  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+}
+
+/* Buttons: 2px radius, NO border, pastel backgrounds */
+.btn{
+  display: inline-block;
+  padding: 12px 18px;
+  border-radius: 2px;   /* exactly as requested */
+  border: none;         /* no border */
+  text-decoration: none;
+  color: var(--btn-ink);
+  font-weight: 700;
+  line-height: 1;
+  transition: transform .12s ease, filter .12s ease;
+  will-change: transform;
+}
+.btn:hover{ transform: translateY(-1px); filter: brightness(1.03); }
+.btn:active{ transform: translateY(0); filter: brightness(.98); }
+.btn-primary{  background: var(--pastel-blue); }
+.btn-secondary{ background: var(--pastel-peach); }
+.btn-mini{
+  padding: 8px 12px;
+  background: #eef6ff;
+  font-size: .9rem;
+  border-radius: 2px;
+}
+.cta-row{ display:flex; gap: 12px; flex-wrap: wrap; }
+
+/* ===== Build Pad (right) ===== */
+.build-pad{
+  position: relative;
+  min-height: 380px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: transparent; /* background drawn inside SVG */
+}
+.build-svg{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Floating controls inside pad */
+.pad-controls{
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.snap-toggle{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: .95rem;
+  color: #333;
+  background: #f4f7ff;
+  padding: 6px 10px;
+  border-radius: 8px;
+  user-select: none;
+}
+.snap-toggle input{ accent-color: #4b9ef7; }
+
+/* ===== Piece styling ===== */
+.piece{ cursor: grab; }
+.piece.dragging{ cursor: grabbing; }
+
+.piece .fill-house  { fill: #FFE9D6; stroke: var(--stroke); stroke-width: 2; }
+.piece .fill-roof   { fill: #FFCDB8; stroke: var(--stroke); stroke-width: 2; }
+.piece .fill-window { fill: #DCEEFF; stroke: var(--stroke); stroke-width: 2; }
+.piece .fill-door   { fill: #F2E5D3; stroke: var(--stroke); stroke-width: 2; }
+
+.piece .window-line { stroke: rgba(0,0,0,0.55); stroke-width: 2; }
+.piece .door-knob   { fill: rgba(0,0,0,0.75); }
+
+/* Background elements inside the SVG are non-interactive */
+svg .bg { pointer-events: none; }
